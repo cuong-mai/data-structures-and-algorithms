@@ -2,7 +2,7 @@ package chapter1.part3;
 
 import java.util.Iterator;
 
-public class MyQueue<T> implements Iterable {
+public class MyQueue<T> implements Iterable<T> {
 
     private Node first;
     private Node last;
