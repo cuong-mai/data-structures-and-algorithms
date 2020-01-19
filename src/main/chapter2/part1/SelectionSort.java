@@ -11,7 +11,7 @@ public class SelectionSort {
                 }
             }
             if (indexOfMin != i) {
-                exchange(a, i, indexOfMin);
+                swap(a, i, indexOfMin);
             }
         }
     }
@@ -20,7 +20,7 @@ public class SelectionSort {
         return x.compareTo(y) < 0;
     }
 
-    private static void exchange(Comparable[] a, int i, int j) {
+    private static void swap(Comparable[] a, int i, int j) {
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
