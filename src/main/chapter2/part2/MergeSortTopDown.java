@@ -20,13 +20,12 @@ public class MergeSortTopDown {
     }
 
     private static void merge(Comparable[] a, int lo, int mid, int hi) {
-        temp = new Comparable[a.length];
-        // Merge a[lo..mid] with a[mid+1..hi].
         int leftIndex = lo, rightIndex = mid + 1;
-        for (int k = lo; k <= hi; k++) // Copy a[lo..hi] to aux[lo..hi].
+
+        for (int k = lo; k <= hi; k++)
             temp[k] = a[k];
 
-        for (int k = lo; k <= hi; k++) { // Merge back to a[lo..hi].
+        for (int k = lo; k <= hi; k++) {
             if (leftIndex > mid) {
                 a[k] = temp[rightIndex];
                 rightIndex++;
@@ -42,29 +41,6 @@ public class MergeSortTopDown {
                 a[k] = temp[rightIndex];
                 rightIndex++;
             }
-
-
-
-
-
-
-
-//            if (i > mid) {
-//                a[k] = aux[j];
-//                j++;
-//
-//            } else if (j > hi) {
-//                a[k] = aux[i];
-//                i++;
-//
-//            } else if (less(aux[j], aux[i])) {
-//                a[k] = aux[j];
-//                j++;
-//
-//            } else {
-//                a[k] = aux[i];
-//                i++;
-//            }
         }
     }
 
