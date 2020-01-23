@@ -2,24 +2,22 @@ package chapter2.part2;
 
 public class MergeSortTopDown {
 
-    private static Comparable[] temp;
-
     public static void sort(Comparable[] a) {
         int n = a.length;
-        temp = new Comparable[n];
-        sort(a, 0, n -1);
+        Comparable[] temp = new Comparable[n];
+        sort(a, temp, 0, n -1);
     }
 
-    private static void sort(Comparable[] a, int lo, int hi) {
+    private static void sort(Comparable[] a, Comparable[] temp, int lo, int hi) {
         if (lo == hi)
             return;
         int mid = (hi - lo) / 2 + lo;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        merge(a, lo, mid, hi);
+        sort(a, temp, lo, mid);
+        sort(a, temp, mid + 1, hi);
+        merge(a, temp, lo, mid, hi);
     }
 
-    private static void merge(Comparable[] a, int lo, int mid, int hi) {
+    private static void merge(Comparable[] a, Comparable[] temp, int lo, int mid, int hi) {
         int leftIndex = lo, rightIndex = mid + 1;
 
         for (int k = lo; k <= hi; k++)
@@ -33,6 +31,7 @@ public class MergeSortTopDown {
             } else if (rightIndex > hi) {
                 a[k] = temp[leftIndex];
                 leftIndex++;
+
             } else if (less(temp[leftIndex], temp[rightIndex])) {
                 a[k] = temp[leftIndex];
                 leftIndex++;
