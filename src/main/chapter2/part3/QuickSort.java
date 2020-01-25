@@ -16,8 +16,9 @@ public class QuickSort {
 
     public static int partitioning(Comparable[] a, int lo, int hi) {
         int left = lo;
-        int right = hi+1;
+        int right = hi + 1;
         Comparable p = a[lo];
+
         while (true) {
             while (less(a[++left], p))
                 if (left == hi)
@@ -32,9 +33,7 @@ public class QuickSort {
 
             swap(a, left, right);
         }
-
         swap(a, lo, right);
-
         return right;
     }
 
