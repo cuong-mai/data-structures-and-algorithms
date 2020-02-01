@@ -15,37 +15,37 @@ public class MaxPriorityQueue<T extends Comparable<T>> {
         swim(n);
     }
 
-    public void removeMax() {
+    public T removeMax() {
+        T max = a[1];
         swap(1, n);
         a[n--] = null;
         sink(1);
+        return max;
     }
 
     private void swim(int i) {
-        int k = i;
-        while (k > 1 && less(a[k/2], a[k])) {
-            swap(k, k/2);
-            k = k/2;
+        while (i > 1 && less(i/2, i)) {
+            swap(i, i/2);
+            i = i/2;
         }
     }
 
     private void sink(int i) {
-        int k = i;
-        while (k <= n/2) {
-            int maxChild = k*2 + 1 <= n ? max(k*2, k*2 + 1) : k*2;
-            if (less(a[k], a[maxChild])) {
-                swap(k, maxChild);
+        while (2*i <= n) {
+            int k = 2*i;
+            if (k < n && less(k, k + 1))
+                k++;
+            if (less(i, k)) {
+                swap(i, k);
+                i = k;
+            } else {
+                break;
             }
-            k++;
         }
     }
 
-    private boolean less(T x, T y) {
-        return x.compareTo(y) < 0;
-    }
-
-    private int max(int i, int j) {
-        return less(a[i], a[j]) ? j : i;
+    private boolean less(int i, int j) {
+        return a[i].compareTo(a[j]) < 0;
     }
 
     private void swap(int i, int j) {

@@ -21,12 +21,18 @@ public class MaxPriorityQueueTest {
         q.print();
         System.out.println("-----------------------------------------------");
 
-        for (int i = 0; i < n; i++) {
-            q.removeMax();
+        Integer[] sorted = new Integer[n];
+        for (int i = 0; i < n - 1; i++) {
+            sorted[i] = q.removeMax();
             q.print();
             System.out.println("-----------------------------------------------");
         }
 
+        for (int i = 0; i < n; i++) {
+            System.out.print("  " + sorted[i] + "  ");
+        }
+        System.out.println();
+        System.out.println("-----------------------------------------------");
     }
 
 }
